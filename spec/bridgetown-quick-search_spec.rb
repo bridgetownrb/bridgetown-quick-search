@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe(BridgetownQuickSearch) do
+describe(Bridgetown::QuickSearch) do
   let(:overrides) { {} }
   let(:config) do
     Bridgetown.configuration(Bridgetown::Utils.deep_merge_hashes({
