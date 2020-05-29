@@ -1,0 +1,24 @@
+---
+---
+[
+  {%- for document in site.documents %}
+    {%- if document.title %}
+      {%- unless document.exclude_from_search %}
+        {
+          "id": "{{ document.url | slugify }}",
+          "title": {{ document.title | jsonify }},
+          {%- if document.collection %}
+          "collection": {
+            "label": {{ document.collection.label | jsonify }},
+            "name": {{ document.collection.name | default: "Posts" | jsonify }}
+          },
+          {%- endif %}
+          "categories": {{ document.categories | join: ", " | jsonify }},
+          "tags": {{ document.tags | join: ", " | jsonify }},
+          "url": {{ document.url | jsonify }},
+          "content": {{ document.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endunless %}
+    {%- endif %}
+  {%- endfor %}
+]

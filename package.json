@@ -1,0 +1,21 @@
+{
+  "name": "bridgetown-quick-search",
+  "version": "1.0.0",
+  "main": "frontend/javascript/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bridgetownrb/bridgetown-quick-search.git"
+  },
+  "author": "Bridgetown Maintainers <maintainers@bridgetownrb.com>",
+  "homepage": "https://www.bridgetownrb.com",
+  "license": "MIT",
+  "private": false,
+  "files": [
+    "frontend"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7.10.1",
+    "lit-element": "^2.3.1",
+    "lunr": "^2.3.8"
+  }
+}
