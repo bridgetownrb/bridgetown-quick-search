@@ -78,10 +78,12 @@ class SearchEngine {
     }
 
     this.query.toLowerCase().split(" ").forEach(word => {
-      output = output.replace(
-        new RegExp(`(${word.replace(/[\.\*\+\(\)]/g, "")})`, "ig"),
-        `<strong>$1</strong>`
-      )
+      if (word != "") {
+        output = output.replace(
+          new RegExp(`(${word.replace(/[\.\*\+\(\)]/g, "")})`, "ig"),
+          `<strong>$1</strong>`
+        )
+      }
     })
 
     return output

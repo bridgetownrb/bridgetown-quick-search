@@ -1,6 +1,6 @@
 {
   "name": "bridgetown-quick-search",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "frontend/javascript/index.js",
   "repository": {
     "type": "git",
