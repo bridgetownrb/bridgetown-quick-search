@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "bridgetown"
-require "bridgetown-quick-search/builder"
 
 Bridgetown::PluginManager.new_source_manifest(
   origin: Bridgetown::QuickSearch,
