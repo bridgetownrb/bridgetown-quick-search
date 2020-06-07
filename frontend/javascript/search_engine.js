@@ -64,7 +64,7 @@ class SearchEngine {
       if (wordLocations[1]) {
         length = Math.min(wordLocations[1] - wordLocations[0], length)
       }
-      console.log("start / end", Math.max(0, wordLocations[0] - padding), length + padding)
+
       output = text.substr(Math.max(0, wordLocations[0] - padding), length + padding)
     } else {
       output = text

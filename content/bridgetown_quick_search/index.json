@@ -1,9 +1,11 @@
 ---
 ---
 [
+  {%- assign looped = false %}
   {%- for document in site.documents %}
     {%- if document.title %}
       {%- unless document.exclude_from_search %}
+        {%- if looped %},{% endif %}
         {
           "id": "{{ document.url | slugify }}",
           "title": {{ document.title | jsonify }},
@@ -17,8 +19,26 @@
           "tags": {{ document.tags | join: ", " | jsonify }},
           "url": {{ document.url | jsonify }},
           "content": {{ document.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }}
-        }{% unless forloop.last %},{% endunless %}
+        }
+        {%- assign looped = true %}
       {%- endunless %}
+    {%- endif %}
+  {%- endfor %}
+  {%- for document in site.pages %}
+    {%- if document.name contains ".md" or document.name contains ".html" %}
+      {%- if document.title %}
+        {%- unless document.exclude_from_search %}
+          {%- if looped %},{% endif %}
+          {
+            "id": "{{ document.url | slugify }}",
+            "title": {{ document.title | jsonify }},
+            "categories": {{ document.categories | join: ", " | jsonify }},
+            "tags": {{ document.tags | join: ", " | jsonify }},
+            "url": {{ document.url | jsonify }},
+            "content": {{ document.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }}
+          }
+        {%- endunless %}
+      {%- endif %}
     {%- endif %}
   {%- endfor %}
 ]

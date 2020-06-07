@@ -25,7 +25,6 @@ export class BridgetownSearchForm extends LitElement {
   }
 
   firstUpdated() {
-    console.info(this.querySelector("input"))
     this.querySelector("input").addEventListener("input", this.handleChange.bind(this));
   }
 
