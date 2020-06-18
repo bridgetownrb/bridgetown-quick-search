@@ -25,7 +25,46 @@ import "bridgetown-quick-search"
 Then add the Liquid component to one of your site templates, for example `src/_components/navbar.liquid`:
 
 ```html
-{% render "bridgetown-quick-search/search" %}
+{% render "bridgetown_quick_search/search" %}
+```
+
+## Component Options
+
+You can provide additional Liquid variables to the component to configure its appearance. These are:
+
+* `placeholder`: Text that will appear in the input control when no search value is present
+* `input_class`: Add custom CSS class names to the input control
+* `theme`: The component's default theme is a "light" appearance, but you can also set it to use a "dark" appearance
+* `snippet_length`: The length of the text snippet for each search result. Defaults to 142.
+
+Here's an example of using all variables at once:
+
+```html
+{% render "bridgetown_quick_search/search", placeholder: "Search", input_class: "input", theme: "dark", snippet_length: 200 %}
+```
+
+## Styling
+
+You can use CSS variables to control aspects of the search results popup. The popup is rendered inside of a Web Component using Shadow DOM, so these variables are the primary method of altering its appearance. The available variables are `link-color`, `divider-color`, `text-color`, `border-radius` and `border-corner-radius`.
+
+```css
+bridgetown-search-results {
+  --link-color: #0f5348;
+  --divider-color: #e6e1d7;
+  --text-color: #3e3f3a;
+}
+```
+
+You can also alter the outer popup container via the custom element directly, as well as the wrapper surrounding the results contents using CSS Shadow Parts:
+
+```css
+bridgetown-search-results {
+/* Adjust the outer container of the popup */
+}
+
+bridgetown-search-results::part(inner) {
+/* Adjust the popup contents wrapper */
+}
 ```
 
 ## Testing
