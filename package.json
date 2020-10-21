@@ -21,6 +21,7 @@
     "frontend"
   ],
   "scripts": {
+    "prepare": "npm run build",
     "prepack": "npm run build",
     "build": "babel ./frontend/javascript --out-dir ./frontend/dist"
   },
