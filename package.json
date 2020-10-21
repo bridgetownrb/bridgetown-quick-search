@@ -4,7 +4,7 @@
   "main": "frontend/javascript/index.js",
   "module": "frontend/javascript/index.js",
   "exports": {
-    "./frontend/dist": {
+    "./dist": {
       "browser": "./frontend/dist/index.js",
       "import": "./frontend/dist/index.js"
     }
