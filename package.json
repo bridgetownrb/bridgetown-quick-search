@@ -25,14 +25,14 @@
     "build": "babel ./frontend/javascript --out-dir ./frontend/dist"
   },
   "dependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-proposal-decorators": "^7.12.1",
     "@babel/runtime": "^7.10.1",
     "lit-element": "^2.3.1",
     "lunr": "^2.3.8"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.12.1"
   }
 }
