@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "babel ./frontend/javascript/index.js --out-file ./frontend/javascript/dist/index.js"
-  }
+  },
   "dependencies": {
     "@babel/runtime": "^7.10.1",
     "lit-element": "^2.3.1",
