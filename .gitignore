@@ -36,3 +36,6 @@ spec/dest
 .bridgetown-metadata
 .bridgetown-cache
 .bridgetown-webpack
+
+# Dist file
+frontend/javascript/dist
