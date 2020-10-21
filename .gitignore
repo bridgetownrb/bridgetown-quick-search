@@ -38,4 +38,4 @@ spec/dest
 .bridgetown-webpack
 
 # Dist file
-frontend/javascript/dist
+frontend/dist

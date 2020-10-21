@@ -3,6 +3,12 @@
   "version": "1.0.3",
   "main": "frontend/javascript/index.js",
   "module": "frontend/javascript/index.js",
+  "exports": {
+    "./frontend/dist": {
+      "browser": "./frontend/dist/index.js",
+      "import": "./frontend/dist/index.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bridgetownrb/bridgetown-quick-search.git"
@@ -15,7 +21,7 @@
     "frontend"
   ],
   "scripts": {
-    "build": "babel ./frontend/javascript/index.js --out-file ./frontend/javascript/dist/index.js"
+    "build": "babel ./frontend/javascript --out-dir ./frontend/dist"
   },
   "dependencies": {
     "@babel/runtime": "^7.10.1",
