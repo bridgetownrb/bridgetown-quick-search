@@ -5,4 +5,4 @@ set -e
 
 script/cibuild
 bundle exec rake release
-npm publish
+yarn build && npm publish

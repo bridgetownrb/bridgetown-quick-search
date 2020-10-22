@@ -22,6 +22,17 @@ Next, add this line to the top of your frontend's Javascript index file:
 import "bridgetown-quick-search"
 ```
 
+### Precompiled
+
+If you need a precompiled version created with babel, you can instead
+do the following:
+
+```js
+// frontend/javascript/index.js
+
+import "bridgetown-quick-search/dist"
+```
+
 Then add the Liquid component to one of your site templates, for example `src/_components/navbar.liquid`:
 
 ```html
