@@ -28,7 +28,7 @@ add the following:
 ```js
 // frontend/javascript/index.js
 
-import "bridgetown-quick-search/dist"
+import "bridgetown-quick-search/frontend/dist"
 ```
 
 Then add the Liquid component to one of your site templates, for example `src/_components/navbar.liquid`:
