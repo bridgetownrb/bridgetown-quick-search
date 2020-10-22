@@ -22,10 +22,8 @@ Next, add this line to the top of your frontend's Javascript index file:
 import "bridgetown-quick-search"
 ```
 
-### Precompiled
-
-If you need a precompiled version created with babel, you can instead
-do the following:
+Or if you need a precompiled version created with Babel, you can instead
+add the following:
 
 ```js
 // frontend/javascript/index.js
