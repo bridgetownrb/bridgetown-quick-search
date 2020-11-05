@@ -1,4 +1,5 @@
 ---
+template_engine: liquid
 ---
 [
   {%- assign looped = false %}
