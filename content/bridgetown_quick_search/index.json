@@ -4,7 +4,7 @@ template_engine: liquid
 [
   {%- assign looped = false %}
   {%- assign documents = site.documents %}
-  {%- if site.content_engine == "resource" }{% assign documents = site.resources %}{% endif %}
+  {%- if site.content_engine == "resource" %}{% assign documents = site.resources %}{% endif %}
   {%- for document in documents %}
     {%- if document.title %}
       {%- unless document.exclude_from_search %}
