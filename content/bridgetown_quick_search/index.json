@@ -7,7 +7,7 @@ template_engine: liquid
   {%- if site.content_engine == "resource" %}{% assign documents = site.resources %}{% endif %}
   {%- for document in documents %}
     {%- if document.title %}
-      {%- unless document.exclude_from_search %}
+      {%- unless document.exclude_from_search or document.id == "" %}
         {%- if looped %},{% endif %}
         {
           "id": "{{ document.url | slugify }}",
