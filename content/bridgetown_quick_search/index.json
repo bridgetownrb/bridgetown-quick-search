@@ -8,9 +8,11 @@ template_engine: liquid
   {%- for document in documents %}
     {%- if document.title %}
       {%- unless document.exclude_from_search or document.id == "" %}
+        {%- assign url = document.url %}
+        {%- if site.content_engine == "resource" %}{% assign url = document.relative_url %}{% endif %}
         {%- if looped %},{% endif %}
         {
-          "id": "{{ document.url | slugify }}",
+          "id": "{{ url | slugify }}",
           "title": {{ document.title | jsonify }},
           {%- if document.collection %}
           "collection": {
@@ -20,7 +22,7 @@ template_engine: liquid
           {%- endif %}
           "categories": {{ document.categories | join: ", " | jsonify }},
           "tags": {{ document.tags | join: ", " | jsonify }},
-          "url": {{ document.url | jsonify }},
+          "url": {{ url | jsonify }},
           "content": {{ document.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }}
         }
         {%- assign looped = true %}
