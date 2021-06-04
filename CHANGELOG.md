@@ -1,4 +1,8 @@
-# master
+# Changelog
+
+# 1.1.0 / 2021-06-04
+
+* Support the Resource content engine in Bridgetown 0.20+
 
 # 1.0.5 / 2020-11-05
 
