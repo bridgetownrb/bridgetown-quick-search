@@ -182,7 +182,7 @@ export class BridgetownSearchResults extends LitElement {
       ${resultsStatus}
       ${this.results.map(result => {
         return html`
-          <a href="${result.url}">
+          <a part="inner-link" href="${result.url}">
             <li><h1>${unsafeHTML(result.heading)}</h1>
             <p>${unsafeHTML(result.preview)}</p></li>
           </a>
