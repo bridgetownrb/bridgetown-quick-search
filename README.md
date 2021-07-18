@@ -22,19 +22,25 @@ Next, add this line to the top of your frontend's Javascript index file:
 import "bridgetown-quick-search"
 ```
 
-Or if you need a precompiled version created with Babel, you can instead
+Or if you need a precompiled version (without experimental decorators), you can instead
 add the following:
 
 ```js
 // frontend/javascript/index.js
 
-import "bridgetown-quick-search/frontend/dist"
+import "bridgetown-quick-search/dist"
 ```
 
 Then add the Liquid component to one of your site templates, for example `src/_components/navbar.liquid`:
 
 ```html
 {% render "bridgetown_quick_search/search" %}
+```
+
+If you're using a Ruby-based template (ERB, etc.), you can use the `liquid_render` helper:
+
+```html
+<%= liquid_render "bridgetown_quick_search/search" %>
 ```
 
 ## Component Options
@@ -73,6 +79,10 @@ bridgetown-search-results {
 
 bridgetown-search-results::part(inner) {
 /* Adjust the popup contents wrapper */
+}
+
+bridgetown-search-results::part(inner-link) {
+/* Adjust the link style of each search result */
 }
 ```
 
