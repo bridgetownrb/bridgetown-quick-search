@@ -1,9 +1,10 @@
 {
   "name": "bridgetown-quick-search",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "frontend/javascript/index.js",
   "module": "frontend/javascript/index.js",
   "exports": {
+    ".": "./frontend/javascript/index.js",
     "./dist": {
       "browser": "./frontend/dist/index.js",
       "import": "./frontend/dist/index.js"
