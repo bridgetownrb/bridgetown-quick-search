@@ -29,7 +29,7 @@ template_engine: liquid
       {%- endunless %}
     {%- endif %}
   {%- endfor %}
-  {%- for document in site.pages %}
+  {%- for document in site.generated_pages %}
     {%- if document.name contains ".md" or document.name contains ".html" %}
       {%- if document.title %}
         {%- unless document.exclude_from_search %}
