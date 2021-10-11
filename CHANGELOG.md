@@ -1,8 +1,13 @@
 # Changelog
 
-## Unreleased
+## 1.1.2 / 2021-10-11
 
+* Upgrade to newer Lit
 * Switch from `site.pages` to `site.generated_pages` due to Bridgetown 1.0 API change
+
+## 1.1.1 / 2021-07-18
+
+* Allow for styling of links
 
 ## 1.1.0 / 2021-06-04
 
