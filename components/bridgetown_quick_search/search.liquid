@@ -1,10 +1,3 @@
-{% comment %}
-variables:
-  input_class?: [string, Custom class(es) to apply to the search input control.]
-  placeholder?: [string, Placeholder text for the search input control.]
-  theme: [string, Dark or Light theme ("dark" or "light"). Defaults to light.]
-  snippet_length?: [integer, Length of the result text snippet. Defaults to 142.] 
-{% endcomment %}
 <bridgetown-search-form>
   <input slot="input" type="search" class="{{ input_class }}" placeholder="{{ placeholder }}" />
   <bridgetown-search-results {% if snippet_length %}snippetlength="{{ snippet_length }}" {% endif %}theme="{% if theme %}{{ theme }}{% endif %}"></bridgetown-search-results>
