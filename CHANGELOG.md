@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0 / 2022-10-08
+
+* Upgrade to new initializer system for Bridgetown 1.2
+
 ## 1.1.2 / 2021-10-11
 
 * Upgrade to newer Lit

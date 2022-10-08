@@ -3,8 +3,10 @@
 require "bridgetown"
 require "bridgetown-quick-search/version"
 
-Bridgetown::PluginManager.new_source_manifest(
-  origin: Bridgetown::QuickSearch,
-  components: File.expand_path("../components", __dir__),
-  content: File.expand_path("../content", __dir__)
-)
+Bridgetown.initializer :"bridgetown-quick-search" do |config|
+  config.source_manifest(
+    origin: Bridgetown::QuickSearch,
+    components: File.expand_path("../components", __dir__),
+    content: File.expand_path("../content", __dir__)
+  )
+end
