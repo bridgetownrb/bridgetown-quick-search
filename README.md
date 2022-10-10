@@ -1,29 +1,26 @@
 # Bridgetown Quick Search plugin
 
-_Requires Bridgetown v0.15 or greater_
-
 This [Bridgetown](https://www.bridgetownrb.com) plugin provides a component you can add to your site (likely the top navbar) to allow fast, real-time search of your posts, pages, and other collection documents. It automatically generates a JSON index file which gets built along with the rest of the site, and then the component consumes that file and uses [Lunr.js](https://lunrjs.com) to construct the live search index and provide the search results as you type.
 
 ----
 
-## Installation
+## Installation for Bridgetown 1.2+
 
 Run this command to add this plugin to your site's Gemfile:
 
 ```shell
-$ bundle add bridgetown-quick-search -g bridgetown_plugins
+$ bundle add bridgetown-quick-search
 ```
+
+And then add the initializer to your configuration in `config/initializers.rb`:
+
+```ruby
+init :"bridgetown-quick-search"
+```
+
+(For Bridgetown 1.1 or earlier, [read these instructions](https://github.com/bridgetownrb/bridgetown-quick-search/tree/v1.1.3).)
 
 Next, add this line to the top of your frontend's Javascript index file:
-
-```js
-// frontend/javascript/index.js
-
-import "bridgetown-quick-search"
-```
-
-Or if you need a precompiled version (without experimental decorators), you can instead
-add the following:
 
 ```js
 // frontend/javascript/index.js
