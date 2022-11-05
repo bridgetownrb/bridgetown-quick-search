@@ -36,7 +36,6 @@ import esbuild from "esbuild"
       outdir: 'frontend/dist',
       format: 'esm',
       target: "es2020",
-      external: ['./node_modules/*'],
       splitting: true,
       chunkNames: 'chunks/[name]-[hash]',
     	bundle: false
