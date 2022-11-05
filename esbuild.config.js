@@ -38,7 +38,8 @@ import esbuild from "esbuild"
       target: "es2020",
       external: ['./node_modules/*'],
       splitting: true,
-      chunkNames: 'chunks/[name]-[hash]'
+      chunkNames: 'chunks/[name]-[hash]',
+    	bundle: false
     })
   ]
 

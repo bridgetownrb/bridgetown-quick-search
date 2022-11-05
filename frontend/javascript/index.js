@@ -9,13 +9,32 @@ import SearchEngine from "./search_engine"
 
 export class BridgetownSearchForm extends LitElement {
   render() {
-    return html`<form part="form"><slot name="input"></slot></form><slot></slot>`
+    return html`
+			<form part="form">
+				<slot name="input" @slotchange=${attachListeners}></slot>
+			</form>
+			<slot></slot>
+		`
   }
 
-  connectedCallback() {
-  	setTimeout(() => {
-    	this.querySelector("input").addEventListener("input", this.handleChange);
-    })
+  disconnectedCallback () {
+  	super.disconnectedCallback()
+		this.removeListeners()
+  }
+
+
+	/**
+   * @param {Event}
+	 */
+	attachListeners (_e) {
+		this.removeListeners()
+		this._input = this.querySelector("input")
+  	this._input?.addEventListener("input", this.handleChange);
+  }
+
+  removeListeners () {
+		this._input?.removeEventListener("input", this.handleChange)
+  	this._input = null
   }
 
   get handleChange () {
@@ -33,8 +52,6 @@ export class BridgetownSearchForm extends LitElement {
     return this._handleChange
   }
 }
-window.customElements.define("bridgetown-search-form", BridgetownSearchForm)
-
 export class BridgetownSearchResults extends LitElement {
 	static get properties () {
 		return {
@@ -211,3 +228,5 @@ export class BridgetownSearchResults extends LitElement {
 }
 
 window.customElements.define("bridgetown-search-results", BridgetownSearchResults)
+window.customElements.define("bridgetown-search-form", BridgetownSearchForm)
+
