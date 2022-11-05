@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0
+
+Modernize the workflow. Remove decorators, update
+entrypoints, remove exportmaps, etc.
+
 ## 2.0.0 / 2022-10-08
 
 * Upgrade to new initializer system for Bridgetown 1.2
