@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"target": "ESNext",
-		"moduleResolution": "Node",
-	}
+		"moduleResolution": "Node"
+	},
   "include": ["frontend/**/*"]
 }
