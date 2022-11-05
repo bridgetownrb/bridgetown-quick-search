@@ -8,6 +8,11 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js"
 import SearchEngine from "./search_engine"
 
 export class BridgetownSearchForm extends LitElement {
+	constructor () {
+		super()
+		this._handleClick = null
+		this._handleChange = null
+	}
   render() {
     return html`
 			<form part="form">
@@ -24,12 +29,33 @@ export class BridgetownSearchForm extends LitElement {
 
 
 	/**
-   * @param {Event}
+   * @param {Event} _e
 	 */
 	attachListeners (_e) {
 		this.removeListeners()
 		this._input = this.querySelector("input")
   	this._input?.addEventListener("input", this.handleChange);
+  	document.addEventListener("click", this.handleClick);
+  }
+
+  get handleClick () {
+  	this._handleClick ||= {
+  		/** @param {Event} e */
+			handleEvent: (e) => {
+				if (!e.composedPath().includes(this)) {
+					this.close()
+				}
+			}
+  	}
+
+  	return this._handleClick
+  }
+
+  close () {
+  	/** @type BridgetownSearchResults */
+		const results = this.querySelector("bridgetown-search-results")
+
+		if (results) results.showResults = false
   }
 
   removeListeners () {
@@ -39,12 +65,15 @@ export class BridgetownSearchForm extends LitElement {
 
   get handleChange () {
   	this._handleChange ||= {
+  		/** @param {Event} e */
   		handleEvent: (e) => {
     		const target = e.currentTarget
     		clearTimeout(this.debounce)
 
     		this.debounce = setTimeout(() => {
-      		this.querySelector("bridgetown-search-results").showResultsForQuery(target.value)
+					/** @type BridgetownSearchResults */
+      		const results = this.querySelector("bridgetown-search-results")
+      		if (results) results.showResultsForQuery(target.value)
     		}, 250)
     	}
     }
@@ -61,8 +90,8 @@ export class BridgetownSearchResults extends LitElement {
 		}
 	}
 
-	constructor (...args) {
-		super(...args)
+	constructor () {
+		super()
 		this.results = []
 		this.snippetLength = 142
 	}
@@ -164,10 +193,6 @@ export class BridgetownSearchResults extends LitElement {
 
     window.addEventListener("resize", () => {
       window.requestAnimationFrame(this.repositionIfNecessary.bind(this))
-//      clearTimeout(this.resizeDebounce)
-//      this.resizeDebounce = setTimeout(() => {
-//        this.repositionIfNecessary()
-//      }, 100)
     })
   }
 
@@ -180,6 +205,9 @@ export class BridgetownSearchResults extends LitElement {
     this.searchEngine.generateIndex(this.searchIndex)
   }
 
+	/**
+	 * @param {string} query
+	 */
   showResultsForQuery(query) {
     this.latestQuery = query
     if (query && query.length > 1) {
