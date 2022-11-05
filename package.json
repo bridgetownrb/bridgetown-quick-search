@@ -1,6 +1,6 @@
 {
   "name": "@konnorr/bridgetown-quick-search",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "main": "frontend/dist/index.js",
   "module": "frontend/dist/index.js",
   "type": "module",
