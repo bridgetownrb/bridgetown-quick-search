@@ -1,6 +1,9 @@
 import * as path from "path";
 import glob from "glob"
 import esbuild from "esbuild"
+import { readFileSync } from "fs";
+
+const deps = Object.keys(JSON.parse(readFileSync("./package.json")).dependencies)
 
 ;(async function () {
   let entries = glob
@@ -37,8 +40,8 @@ import esbuild from "esbuild"
       format: 'esm',
       target: "es2020",
       splitting: true,
+    	external: deps,
       chunkNames: 'chunks/[name]-[hash]',
-    	bundle: false
     })
   ]
 

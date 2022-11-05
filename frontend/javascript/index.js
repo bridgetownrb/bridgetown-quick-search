@@ -11,7 +11,7 @@ export class BridgetownSearchForm extends LitElement {
   render() {
     return html`
 			<form part="form">
-				<slot name="input" @slotchange=${attachListeners}></slot>
+				<slot name="input" @slotchange=${this.attachListeners}></slot>
 			</form>
 			<slot></slot>
 		`
