@@ -1,6 +1,3 @@
 {
-  "compilerOptions": {
-    "experimentalDecorators": true
-  },
   "include": ["frontend/**/*"]
 }
