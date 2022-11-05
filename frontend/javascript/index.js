@@ -86,7 +86,8 @@ export class BridgetownSearchResults extends LitElement {
 		return {
 			theme: { type: String },
 			results: { type: Array },
-			snippetLength: { type: Number }
+			snippetLength: { type: Number },
+			showResults: { type: String }
 		}
 	}
 
