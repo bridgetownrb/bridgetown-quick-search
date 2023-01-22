@@ -2,48 +2,100 @@
 
 import "bridgetown-quick-search"
 
-Also requires:
-
-$ yarn add @babel/plugin-proposal-decorators --dev
-
-And in webpack.config.js:
-
-plugins: [
-  ["@babel/plugin-proposal-decorators", { "legacy": true }],
-  ["@babel/plugin-proposal-class-properties", { "loose" : true }],
-  ...
-]
 */
 import { LitElement, css, html } from "lit"
-import { customElement, property } from "lit/decorators.js"
 import { unsafeHTML } from "lit/directives/unsafe-html.js"
 import SearchEngine from "./search_engine"
 
-@customElement("bridgetown-search-form")
 export class BridgetownSearchForm extends LitElement {
+	constructor () {
+		super()
+		this._handleClick = null
+		this._handleChange = null
+	}
   render() {
-    return html`<form><slot name="input"></slot></form><slot></slot>`
+    return html`
+			<form part="form">
+				<slot name="input" @slotchange=${this.attachListeners}></slot>
+			</form>
+			<slot></slot>
+		`
   }
 
-  firstUpdated() {
-    this.querySelector("input").addEventListener("input", this.handleChange.bind(this));
+  disconnectedCallback () {
+  	super.disconnectedCallback()
+		this.removeListeners()
   }
 
-  handleChange(e) {
-    const target = e.currentTarget
-    clearTimeout(this.debounce)
 
-    this.debounce = setTimeout(() => {
-      this.querySelector("bridgetown-search-results").showResultsForQuery(target.value)
-    }, 250)
+	/**
+   * @param {Event} _e
+	 */
+	attachListeners (_e) {
+		this.removeListeners()
+		this._input = this.querySelector("input")
+  	this._input?.addEventListener("input", this.handleChange);
+  	document.addEventListener("click", this.handleClick);
+  }
+
+  get handleClick () {
+  	this._handleClick ||= {
+  		/** @param {Event} e */
+			handleEvent: (e) => {
+				if (!e.composedPath().includes(this)) {
+					this.close()
+				}
+			}
+  	}
+
+  	return this._handleClick
+  }
+
+  close () {
+  	/** @type BridgetownSearchResults */
+		const results = this.querySelector("bridgetown-search-results")
+
+		if (results) results.showResults = false
+  }
+
+  removeListeners () {
+		this._input?.removeEventListener("input", this.handleChange)
+  	this._input = null
+  }
+
+  get handleChange () {
+  	this._handleChange ||= {
+  		/** @param {Event} e */
+  		handleEvent: (e) => {
+    		const target = e.currentTarget
+    		clearTimeout(this.debounce)
+
+    		this.debounce = setTimeout(() => {
+					/** @type BridgetownSearchResults */
+      		const results = this.querySelector("bridgetown-search-results")
+      		if (results) results.showResultsForQuery(target.value)
+    		}, 250)
+    	}
+    }
+
+    return this._handleChange
   }
 }
-
-@customElement("bridgetown-search-results")
 export class BridgetownSearchResults extends LitElement {
-  @property({ type: String }) theme
-  @property({ type: Array }) results = []
-  @property({ type: Number }) snippetLength = 142
+	static get properties () {
+		return {
+			theme: { type: String },
+			results: { type: Array },
+			snippetLength: { type: Number },
+			showResults: { type: String }
+		}
+	}
+
+	constructor () {
+		super()
+		this.results = []
+		this.snippetLength = 142
+	}
 
   static styles = css`
     :host {
@@ -142,14 +194,10 @@ export class BridgetownSearchResults extends LitElement {
 
     window.addEventListener("resize", () => {
       window.requestAnimationFrame(this.repositionIfNecessary.bind(this))
-//      clearTimeout(this.resizeDebounce)
-//      this.resizeDebounce = setTimeout(() => {
-//        this.repositionIfNecessary()
-//      }, 100)
     })
   }
 
-  async fetchSearchIndex() 
+  async fetchSearchIndex()
   {
     const response = await fetch(`/bridgetown_quick_search/index.json`)
     this.searchIndex = await response.json()
@@ -158,6 +206,9 @@ export class BridgetownSearchResults extends LitElement {
     this.searchEngine.generateIndex(this.searchIndex)
   }
 
+	/**
+	 * @param {string} query
+	 */
   showResultsForQuery(query) {
     this.latestQuery = query
     if (query && query.length > 1) {
@@ -171,7 +222,7 @@ export class BridgetownSearchResults extends LitElement {
 
   render() {
     this.repositionIfNecessary()
-    
+
     let resultsStatus = ""
     if (this.results.length == 0) {
       resultsStatus = html`<p id="no-results">No results found for "<strong>${this.latestQuery}</strong>"</p>`
@@ -204,3 +255,7 @@ export class BridgetownSearchResults extends LitElement {
     }
   }
 }
+
+window.customElements.define("bridgetown-search-results", BridgetownSearchResults)
+window.customElements.define("bridgetown-search-form", BridgetownSearchForm)
+

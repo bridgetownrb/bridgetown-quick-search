@@ -1,6 +1,7 @@
 {
-  "compilerOptions": {
-    "experimentalDecorators": true
-  },
+	"compilerOptions": {
+		"target": "ESNext",
+		"moduleResolution": "Node"
+	},
   "include": ["frontend/**/*"]
 }

@@ -1,15 +1,9 @@
 {
-  "name": "bridgetown-quick-search",
-  "version": "2.0.0",
-  "main": "frontend/javascript/index.js",
-  "module": "frontend/javascript/index.js",
-  "exports": {
-    ".": "./frontend/javascript/index.js",
-    "./dist": {
-      "browser": "./frontend/dist/index.js",
-      "import": "./frontend/dist/index.js"
-    }
-  },
+  "name": "@konnorr/bridgetown-quick-search",
+  "version": "3.0.2",
+  "main": "frontend/dist/index.js",
+  "module": "frontend/dist/index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/bridgetownrb/bridgetown-quick-search.git"
@@ -18,21 +12,21 @@
   "homepage": "https://www.bridgetownrb.com",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+  	"access": "public"
+  },
   "files": [
     "frontend"
   ],
   "scripts": {
-    "build": "babel ./frontend/javascript --out-dir ./frontend/dist"
+    "build": "rm -rf frontend/dist && node esbuild.config.js"
   },
   "dependencies": {
-    "@babel/runtime": "^7.10.1",
-    "lit": "^2.0.0",
+    "lit": "^2.4.1",
     "lunr": "^2.3.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-proposal-decorators": "^7.12.1"
+    "esbuild": "^0.15.13",
+    "glob": "^8.0.3"
   }
 }
