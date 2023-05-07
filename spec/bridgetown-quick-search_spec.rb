@@ -77,6 +77,22 @@ describe(Bridgetown::QuickSearch) do
       end
     end
 
+    context "based upon quick_search_terms" do
+      let(:terms_entry) {
+        parsed_index.find { |entry| entry["url"] == "/terms/" }
+      }
+
+      it "creates the index.json file" do
+        expect(index_json).to exist
+      end
+
+      it "includes contente from quick_search_terms" do
+        expect(terms_entry["content"]).to match(/quick terms/)
+      end
+
+      it "does not include content from quick_search_terms body" do
+        expect(terms_entry["content"]).not_to match(/NOT IN SEARCH/)
+      end
     end
   end
 end
