@@ -86,8 +86,8 @@ describe(Bridgetown::QuickSearch) do
         expect(index_json).to exist
       end
 
-      it "includes contente from quick_search_terms" do
-        expect(terms_entry["content"]).to match(/quick terms/)
+      it "includes content from quick_search_terms" do
+        expect(terms_entry["content"]).to match(/override the default content/)
       end
 
       it "does not include content from quick_search_terms body" do
