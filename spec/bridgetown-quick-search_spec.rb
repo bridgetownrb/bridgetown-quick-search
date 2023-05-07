@@ -70,6 +70,13 @@ describe(Bridgetown::QuickSearch) do
         index_entry  = parsed_index.find { |entry| entry["url"] == "/bridgetown_quick_search/index.json" }
         expect(index_entry).to be_nil
       end
+
+      it "does not include excluded content" do
+        excluded_entry = parsed_index.find { |entry| entry["url"] == "/excluded/" }
+        expect(excluded_entry).to be_nil
+      end
+    end
+
     end
   end
 end
