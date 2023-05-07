@@ -1,5 +1,6 @@
 ---
 template_engine: liquid
+exclude_from_search: true
 ---
 [
   {%- assign looped = false %}
