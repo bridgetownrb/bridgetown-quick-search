@@ -40,6 +40,10 @@ describe(Bridgetown::QuickSearch) do
     let(:contents) { File.read(dest_dir("index.html")) }
     let(:index_json) { Pathname.new(dest_dir("bridgetown_quick_search/index.json")) }
 
+    def parsed_index(index: index_json)
+      JSON.parse(index.read)
+    end
+
     before(:each) do
       metadata = metadata_defaults.merge(metadata_overrides).to_yaml.sub("---\n", "")
       File.write(source_dir("_data/site_metadata.yml"), metadata)
@@ -57,16 +61,12 @@ describe(Bridgetown::QuickSearch) do
       end
 
       it "has the content from the index.html file in the index" do
-        expect(index_json).to exist
-        parsed_index = JSON.parse(index_json.read)
         root_entry = parsed_index.find { |entry| entry["url"] == "/" }
         expect(root_entry).not_to be_nil
         expect(root_entry["content"]).to match(/Testing this plugin/)
       end
 
       it "does not include its own template in the output" do
-        expect(index_json).to exist
-        parsed_index = JSON.parse(index_json.read)
         index_entry  = parsed_index.find { |entry| entry["url"] == "/bridgetown_quick_search/index.json" }
         expect(index_entry).to be_nil
       end
