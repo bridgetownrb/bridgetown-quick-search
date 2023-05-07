@@ -63,5 +63,13 @@ describe(Bridgetown::QuickSearch) do
         expect(root_entry).not_to be_nil
         expect(root_entry["content"]).to match(/Testing this plugin/)
       end
+
+      it "does not include its own template in the output" do
+        expect(index_json).to exist
+        parsed_index = JSON.parse(index_json.read)
+        index_entry  = parsed_index.find { |entry| entry["url"] == "/bridgetown_quick_search/index.json" }
+        expect(index_entry).to be_nil
+      end
+    end
   end
 end
