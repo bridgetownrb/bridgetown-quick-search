@@ -85,7 +85,10 @@ bridgetown-search-results::part(inner-link) {
 
 ## Controlling the Search Index
 
-You can add `exclude_from_search: true` to the front matter of any page or document to exclude it from the search index JSON. To batch-exclude pages, collections, categories, etc., you could use front matter defaults to set the `exclude_from_search` variable.
+You can provide additional front matter variables to any page or document to control the search index. These are:
+
+* `exclude_from_search: true`: Setting this will exclude that item from the search index JSON. To batch-exclude pages, collections, categories, etc., you could use front matter defaults to set the `exclude_from_search` variable.
+* `quick_search_content: "content for the index"`: Setting this will override the content in the search index JSON. Normally the content in the search index JSON is the content of the page. Setting this front matter variable explicilty sets the content in the search index JSON.
 
 ## Testing
 
