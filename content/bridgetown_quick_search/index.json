@@ -1,5 +1,6 @@
 ---
 template_engine: liquid
+layout: none
 ---
 [
   {%- assign looped = false %}
