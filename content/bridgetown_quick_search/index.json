@@ -23,7 +23,8 @@ template_engine: liquid
           "categories": {{ document.categories | join: ", " | jsonify }},
           "tags": {{ document.tags | join: ", " | jsonify }},
           "url": {{ url | jsonify }},
-          "content": {{ document.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }}
+          "content": {{ document.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
+          "data": {{ document.data | jsonify }}
         }
         {%- assign looped = true %}
       {%- endunless %}
@@ -40,7 +41,8 @@ template_engine: liquid
             "categories": {{ document.categories | join: ", " | jsonify }},
             "tags": {{ document.tags | join: ", " | jsonify }},
             "url": {{ document.url | jsonify }},
-            "content": {{ document.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }}
+            "content": {{ document.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
+            "data": {{ document.data | jsonify }}
           }
         {%- endunless %}
       {%- endif %}
