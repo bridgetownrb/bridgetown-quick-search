@@ -44,6 +44,7 @@ export class BridgetownSearchResults extends LitElement {
   @property({ type: String }) theme
   @property({ type: Array }) results = []
   @property({ type: Number }) snippetLength = 142
+  @property({ type: Boolean }) displayCollection = false
 
   static styles = css`
     :host {
@@ -162,7 +163,7 @@ export class BridgetownSearchResults extends LitElement {
     this.latestQuery = query
     if (query && query.length > 1) {
       this.showResults = true
-      this.results = this.searchEngine.performSearch(query, this.snippetLength).slice(0, 10)
+      this.results = this.searchEngine.performSearch(query, this.snippetLength, this.displayCollection).slice(0, 10)
     } else {
       this.showResults = false
     }
