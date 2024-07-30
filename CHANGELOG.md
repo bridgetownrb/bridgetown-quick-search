@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.2 / 2024-07-30
+
+* Just remove decorators altogether (still causing downstream build issues)
+
 ## 3.0.1 / 2024-07-30
 
 * Ensure esbuild output compiles away decorators

@@ -3,12 +3,14 @@
 import "bridgetown-quick-search"
 */
 import { LitElement, css, html } from "lit"
-import { customElement, property } from "lit/decorators.js"
 import { unsafeHTML } from "lit/directives/unsafe-html.js"
 import SearchEngine from "./search_engine"
 
-@customElement("bridgetown-search-form")
 export class BridgetownSearchForm extends LitElement {
+  static {
+    customElements.define("bridgetown-search-form", this)
+  }
+
   render() {
     return html`<form><slot name="input"></slot></form><slot></slot>`
   }
@@ -27,12 +29,24 @@ export class BridgetownSearchForm extends LitElement {
   }
 }
 
-@customElement("bridgetown-search-results")
 export class BridgetownSearchResults extends LitElement {
-  @property({ type: String }) theme
-  @property({ type: Array }) results = []
-  @property({ type: Number }) snippetLength = 142
-  @property({ type: Boolean }) displayCollection = false
+  static {
+    customElements.define("bridgetown-search-results", this)
+  }
+
+  static properties = {
+    theme: { type: String },
+    results: { type: Array },
+    snippetLength: { type: Number },
+    displayCollection: { type: Boolean },
+  }
+
+	constructor () {
+		super()
+		this.results = []
+		this.snippetLength = 142
+    this.displayCollection = false
+	}
 
   static styles = css`
     :host {
