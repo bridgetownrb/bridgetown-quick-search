@@ -1,10 +1,13 @@
 {
   "name": "bridgetown-quick-search",
-  "version": "2.0.0",
-  "main": "frontend/javascript/index.js",
-  "module": "frontend/javascript/index.js",
+  "version": "3.0.0",
+  "main": "frontend/dist/index.js",
   "exports": {
-    ".": "./frontend/javascript/index.js",
+    ".": "./frontend/dist/index.js",
+    "./javascript": {
+      "browser": "./frontend/javascript/index.js",
+      "import": "./frontend/javascript/index.js"
+    },
     "./dist": {
       "browser": "./frontend/dist/index.js",
       "import": "./frontend/dist/index.js"
@@ -22,17 +25,13 @@
     "frontend"
   ],
   "scripts": {
-    "build": "babel ./frontend/javascript --out-dir ./frontend/dist"
+    "build": "esbuild frontend/javascript/index.js --bundle --outdir=frontend/dist --format=esm"
   },
   "dependencies": {
-    "@babel/runtime": "^7.10.1",
-    "lit": "^2.0.0",
+    "lit": "^3.1.0",
     "lunr": "^2.3.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-proposal-decorators": "^7.12.1"
+    "esbuild": "^0.23.0"
   }
 }

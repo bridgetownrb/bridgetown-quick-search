@@ -18,14 +18,12 @@ And then add the initializer to your configuration in `config/initializers.rb`:
 init :"bridgetown-quick-search"
 ```
 
-(For Bridgetown 1.1 or earlier, [read these instructions](https://github.com/bridgetownrb/bridgetown-quick-search/tree/v1.1.3).)
-
 Next, add this line to the top of your frontend's Javascript index file:
 
 ```js
 // frontend/javascript/index.js
 
-import "bridgetown-quick-search/dist"
+import "bridgetown-quick-search"
 ```
 
 Then add the Liquid component to one of your site templates, for example `src/_components/navbar.liquid`:

@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = Bridgetown::QuickSearch::VERSION
   spec.author        = "Bridgetown Team"
   spec.email         = "maintainers@bridgetownrb.com"
-  spec.summary       = "A Liquid + Web Component for Bridgetown sites which performs search queries with Lunr.js."
+  spec.summary       = "A component for Bridgetown sites which performs search queries with Lunr.js."
   spec.homepage      = "https://github.com/bridgetownrb/bridgetown-quick-search"
   spec.license       = "MIT"
 
@@ -16,13 +16,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.metadata      = { "yarn-add" => "bridgetown-quick-search@#{Bridgetown::QuickSearch::VERSION}" }
 
-  spec.required_ruby_version = ">= 2.7.0"
+  spec.required_ruby_version = ">= 3.1.0"
 
-  spec.add_dependency "bridgetown", ">= 1.2.0.beta2", "< 2.0"
+  spec.add_dependency "bridgetown", ">= 1.2.0.beta2", "< 3.0"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "nokogiri", "~> 1.6"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rubocop-bridgetown", "~> 0.2"
+  spec.add_development_dependency "rubocop-bridgetown", "~> 0.3"
 end

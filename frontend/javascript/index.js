@@ -1,18 +1,6 @@
 /* Use in your app by simply adding to your app's index.js:
 
 import "bridgetown-quick-search"
-
-Also requires:
-
-$ yarn add @babel/plugin-proposal-decorators --dev
-
-And in webpack.config.js:
-
-plugins: [
-  ["@babel/plugin-proposal-decorators", { "legacy": true }],
-  ["@babel/plugin-proposal-class-properties", { "loose" : true }],
-  ...
-]
 */
 import { LitElement, css, html } from "lit"
 import { customElement, property } from "lit/decorators.js"

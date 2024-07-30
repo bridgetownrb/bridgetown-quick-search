@@ -8,5 +8,5 @@ variables:
 {% endcomment %}
 <bridgetown-search-form>
   <input slot="input" type="search" class="{{ input_class }}" placeholder="{{ placeholder }}" />
-  <bridgetown-search-results {% if snippet_length %}snippetlength="{{ snippet_length }}" {% endif %}theme="{% if theme %}{{ theme }} {% endif %}"{% if display_collection %}displayCollection="{{ display_collection }}"{% endif %}></bridgetown-search-results>
+  <bridgetown-search-results {% if snippet_length %}snippetlength="{{ snippet_length }}" {% endif %}theme="{% if theme %}{{ theme }} {% endif %}"{% if display_collection %} displayCollection="{{ display_collection }}"{% endif %}></bridgetown-search-results>
 </bridgetown-search-form>

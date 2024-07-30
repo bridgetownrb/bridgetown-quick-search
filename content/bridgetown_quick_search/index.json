@@ -1,18 +1,17 @@
 ---
 template_engine: liquid
+layout: none
 exclude_from_search: true
 ---
 [
   {%- assign looped = false %}
-  {%- assign documents = site.documents %}
-  {%- if site.content_engine == "resource" %}{% assign documents = site.resources %}{% endif %}
+  {%- assign documents = site.resources %}
   {%- for document in documents %}
     {%- if document.title %}
       {%- unless document.exclude_from_search or document.id == "" %}
-        {%- assign url = document.url %}
+        {%- assign url = document.relative_url %}
         {%- assign content = document.content %}
         {%- if document.quick_search_content %}{% assign content = document.quick_search_content %}{% endif %}
-        {%- if site.content_engine == "resource" %}{% assign url = document.relative_url %}{% endif %}
         {%- if looped %},{% endif %}
         {
           "id": "{{ url | slugify }}",

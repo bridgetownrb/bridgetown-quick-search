@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.0 / 2024-07-30
+
+* Add collection name to preview title [#26] @thimy
+* Add quick_search_content front matter overrides [#21] @copiousfreetime
+* Add support for Bridgetown 2.0
+* Switch to much improved esbuild build system for the repo
+
 ## 2.0.0 / 2022-10-08
 
 * Upgrade to new initializer system for Bridgetown 1.2
