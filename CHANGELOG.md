@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.3 / 2024-07-30
+
+* Fix incorrect static / constructor syntax
+
 ## 3.0.2 / 2024-07-30
 
 * Just remove decorators altogether (still causing downstream build issues)

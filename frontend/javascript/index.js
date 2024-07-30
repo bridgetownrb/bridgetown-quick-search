@@ -30,23 +30,12 @@ export class BridgetownSearchForm extends LitElement {
 }
 
 export class BridgetownSearchResults extends LitElement {
-  static {
-    customElements.define("bridgetown-search-results", this)
-  }
-
   static properties = {
     theme: { type: String },
     results: { type: Array },
     snippetLength: { type: Number },
     displayCollection: { type: Boolean },
   }
-
-	constructor () {
-		super()
-		this.results = []
-		this.snippetLength = 142
-    this.displayCollection = false
-	}
 
   static styles = css`
     :host {
@@ -138,6 +127,17 @@ export class BridgetownSearchResults extends LitElement {
       margin-top: 0.5em;
     }
   `
+
+  static {
+    customElements.define("bridgetown-search-results", this)
+  }
+
+  constructor () {
+    super()
+    this.results = []
+    this.snippetLength = 142
+    this.displayCollection = false
+  }
 
   connectedCallback() {
     super.connectedCallback()
