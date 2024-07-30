@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1 / 2024-07-30
+
+* Ensure esbuild output compiles away decorators
+
 ## 3.0.0 / 2024-07-30
 
 * Add collection name to preview title [#26] @thimy
