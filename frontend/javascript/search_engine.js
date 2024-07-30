@@ -21,7 +21,7 @@ class SearchEngine {
     this.indexData = indexData
   }
 
-  performSearch(query, snippetLength = null) {
+  performSearch(query, snippetLength = null, displayCollection = false) {
     if (this.index) {
       this.query = query
       const results = this.index.search(this.query)
@@ -30,7 +30,8 @@ class SearchEngine {
         return results.map(result => {
           const item = this.indexData.find(item => item.id == result.ref)
           const contentPreview = this.previewTemplate(item.content, snippetLength)
-          const titlePreview = this.previewTemplate(item.title) + `<!--(${result.score})-->`
+          const collectionName = displayCollection ? `${item.collection.name} > ` : ""
+          const titlePreview = collectionName + this.previewTemplate(item.title) + `<!--(${result.score})-->`
 
           return {
             url: item.url.trim(),

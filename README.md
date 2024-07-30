@@ -48,11 +48,12 @@ You can provide additional Liquid variables to the component to configure its ap
 * `input_class`: Add custom CSS class names to the input control
 * `theme`: The component's default theme is a "light" appearance, but you can also set it to use a "dark" appearance
 * `snippet_length`: The length of the text snippet for each search result. Defaults to 142.
+* `display_collection`: Will show collections to which belong search results if true. Defaults to false.
 
 Here's an example of using all variables at once:
 
 ```html
-{% render "bridgetown_quick_search/search", placeholder: "Search", input_class: "input", theme: "dark", snippet_length: 200 %}
+{% render "bridgetown_quick_search/search", placeholder: "Search", input_class: "input", theme: "dark", snippet_length: 200, display_collection: true %}
 ```
 
 ## Styling
